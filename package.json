@@ -1,0 +1,78 @@
+{
+  "name": "payout",
+  "description": "Execute transfer payout to investors",
+  "version": "0.0.0",
+  "author": "vincent",
+  "bin": {
+    "payout": "./bin/run.js"
+  },
+  "bugs": "https://github.com/nghenhan/payout/issues",
+  "dependencies": {
+    "@inquirer/prompts": "^5.3.8",
+    "@listr2/prompt-adapter-inquirer": "^2.0.15",
+    "@oclif/core": "^4",
+    "@oclif/plugin-help": "^6",
+    "@oclif/plugin-plugins": "^5",
+    "cli-table3": "^0.6.5",
+    "csv-parser": "^3.0.0",
+    "handlebars": "^4.7.8",
+    "inquirer": "^10.1.8",
+    "ky": "^1.7.1",
+    "listr2": "^8.2.4"
+  },
+  "devDependencies": {
+    "@oclif/prettier-config": "^0.2.1",
+    "@oclif/test": "^4",
+    "@types/chai": "^4",
+    "@types/mocha": "^10",
+    "@types/node": "^18",
+    "chai": "^4",
+    "mocha": "^10",
+    "oclif": "^4",
+    "shx": "^0.3.3",
+    "ts-node": "^10",
+    "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "/bin",
+    "/dist",
+    "/oclif.manifest.json"
+  ],
+  "homepage": "https://github.com/nghenhan/payout",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "MIT",
+  "main": "dist/index.js",
+  "type": "module",
+  "oclif": {
+    "bin": "payout",
+    "dirname": "payout",
+    "commands": "./dist/commands",
+    "plugins": [
+      "@oclif/plugin-help",
+      "@oclif/plugin-plugins"
+    ],
+    "topicSeparator": " ",
+    "topics": {
+      "hello": {
+        "description": "Say hello to the world and others"
+      }
+    }
+  },
+  "repository": "nghenhan/payout",
+  "scripts": {
+    "dev": "./bin/run.js execute --currency ETHW --bpay-api-key test --bpay-secret-key test --api-key vRj9OEELm04e7LyXL3Uhu0S0yBlcAFxD8jdR2Z5BY1U1JHiFqA8yu98SG8KZdXTW --secret-key OCLjNIfMnfmTqhxVpZlL9Rv3FszFRwlwcwDXOwEItZ6R2g7cGbbGEi6sj93HvJy8 -f ./payout_dummy.csv",
+    "build": "shx rm -rf dist && tsc -b",
+    "lint": "eslint . --ext .ts",
+    "postpack": "shx rm -f oclif.manifest.json",
+    "posttest": "pnpm run lint",
+    "prepack": "oclif manifest && oclif readme",
+    "test": "mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif readme && git add README.md"
+  },
+  "types": "dist/index.d.ts"
+}
