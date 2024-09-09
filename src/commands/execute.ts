@@ -120,30 +120,8 @@ It contains multiple steps:
       bsk,
     }
 
-    // Read or create template file
-    const templatePath = path.join(path.dirname(envFileManager.envFilePath), 'template.handlebars')
-    try {
-      ctx.msgTemplate = await fs.readFile(templatePath, 'utf8')
-    } catch (error) {
-      // If file doesn't exist, create it with default content
-      const defaultTemplate = `
-Hello {{telegram}},
-
-Great news! Your payout of {{amount}} {{currency}} for the {{pool_name}} pool has been sent and should arrive in your account shortly.
-
-Transaction details:
-- Amount: {{amount}} {{currency}}
-- Order ID: {{orderId}}
-
-Thank you for your investment!
-
-Best regards,
-The {{pool_name}} Team
-      `.trim()
-
-      await fs.writeFile(templatePath, defaultTemplate)
-      ctx.msgTemplate = defaultTemplate
-    }
+    // Get or create template
+    ctx.msgTemplate = await getOrCreateTemplate(envFileManager.envFilePath)
 
     try {
       const tasks = new Listr(
