@@ -16,7 +16,7 @@ The main command of this CLI tool is `execute`. This command allows you to proce
 The `execute` command is used to process Binance payouts. Here's the basic usage:
 
 ```
-cli-tool execute [OPTIONS]
+payout execute [OPTIONS]
 ```
 
 #### Options
@@ -31,7 +31,7 @@ cli-tool execute [OPTIONS]
 #### Example
 
 ```
-cli-tool execute --currency USDT --csv payouts.csv --api-key your_api_key --api-secret your_api_secret --notify-chat-id 123456789 --notify-bot-token your_bot_token
+payout execute --currency USDT --csv payouts.csv --api-key your_api_key --api-secret your_api_secret --notify-chat-id 123456789 --notify-bot-token your_bot_token
 ```
 
 ### Local Environment Storage
@@ -41,14 +41,14 @@ This CLI tool includes a feature that saves command flags to a local environment
 **Important Notes:**
 - The environment file is stored locally on your machine.
 - The stored information is never sent anywhere and remains on your local system.
-- The environment file is located at `~/.cli-tool/.env` (adjust the path based on your CLI tool's name).
+- The environment file is located at `~/.payout/.env` (adjust the path based on your CLI tool's name).
 
 When you run the `execute` command with flags, the CLI tool will save these flags to the local environment file. In subsequent runs, you can omit previously used flags, and the tool will use the saved values.
 
 For example, after running the command with all flags once:
 
 ```
-cli-tool execute --currency USDT --csv new_payouts.csv
+payout execute --currency USDT --csv new_payouts.csv
 ```
 
 The tool will use the saved API key, API secret, and notification settings from the previous run, only updating the currency and CSV file path.
