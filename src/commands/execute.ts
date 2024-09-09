@@ -12,6 +12,7 @@ import os from 'node:os'
 import EnvFileManager from '../env-file-manager.js'
 import {queryPayStatus, pay, getSpotBalance, getFundingBalance, universalTransfer} from '../binance.js'
 import {notify} from '../notify.js'
+import {getOrCreateTemplate} from '../template-manager.js'
 
 export default class Execute extends Command {
   static description = `A cli to transfer payout to investors.
